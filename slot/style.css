@@ -513,23 +513,23 @@ button {
   }
 }
 
-/* 繼續接單：回遊戲 */
+/* 繼續接單：紅金圖片按鈕（圖底 + 疊字） */
 .back-to-game {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: var(--machine-width);
-  margin: 4px auto 30px;
-  padding: 16px;
-  text-align: center;
+  aspect-ratio: 1100 / 272;
+  margin: 8px auto 26px;
+  background: url("./assets/btn_continue.png") center / contain no-repeat;
   text-decoration: none;
-  border-radius: 14px;
-  border: 2px solid var(--gold-rim);
-  background: linear-gradient(#d8452c, #8f150f);
   color: #fff;
-  font-size: 22px;
+  font-size: 30px;
   font-weight: 900;
-  letter-spacing: 3px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5), 0 0 16px rgba(255, 90, 40, 0.18);
+  letter-spacing: 4px;
+  text-shadow: 0 2px 3px rgba(110, 8, 0, 0.55), 0 1px 0 rgba(255, 205, 160, 0.25);
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.45));
 }
 .back-to-game:active {
-  transform: translateY(1px);
+  transform: translateY(2px);
 }
