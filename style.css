@@ -163,7 +163,7 @@ body:has(#screen-game.active){background:#000;overflow:hidden}
 
 /* ===== 首頁封面：炭火場景 + 標題 + 開始營業 ===== */
 #screen-home.active{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:0}
-#screen-home .home-bg{background:linear-gradient(rgba(10,6,3,.5),rgba(10,6,3,.2) 34%,rgba(10,6,3,.5) 60%,rgba(8,5,3,.92)),url("./assets/home_bg.jpg");background-size:cover;background-position:center 50%}
+#screen-home .home-bg{background:linear-gradient(rgba(10,6,3,.5),rgba(10,6,3,.2) 34%,rgba(10,6,3,.5) 60%,rgba(8,5,3,.92)),url("./assets/home_bg.jpg?v=2");background-size:cover;background-position:center 50%}
 #screen-home .logo-wrap{position:relative;z-index:1;padding-top:54px}
 #screen-home .logo-main{font-size:52px;letter-spacing:4px}
 #screen-home .logo-badge{position:absolute;top:34px;left:50%;margin-left:84px;right:auto}
@@ -175,9 +175,9 @@ body:has(#screen-game.active){background:#000;overflow:hidden}
 
 /* ===== 首頁封面（精緻版）：模糊滿版底 + 清晰主圖 + 暈影 + 淡入 ===== */
 #screen-home.active{display:block;padding:0;background:#0a0604;position:relative;overflow:hidden}
-#screen-home.active::before{content:"";position:absolute;inset:-8%;background:url("./assets/home_bg.jpg") center center/cover no-repeat;filter:blur(26px) brightness(.42) saturate(1.2);z-index:0}
+#screen-home.active::before{content:"";position:absolute;inset:-8%;background:url("./assets/home_bg.jpg?v=2") center center/cover no-repeat;filter:blur(26px) brightness(.42) saturate(1.2);z-index:0}
 #screen-home.active::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,transparent 50%,rgba(0,0,0,.62));z-index:2;pointer-events:none}
-#screen-home .home-bg{background:url("./assets/home_bg.jpg") center center/contain no-repeat;filter:none;z-index:1;animation:homeFade .9s ease both}
+#screen-home .home-bg{background:url("./assets/home_bg.jpg?v=2") center center/contain no-repeat;filter:none;z-index:1;animation:homeFade .9s ease both}
 @keyframes homeFade{from{opacity:0;transform:scale(1.03)}to{opacity:1;transform:scale(1)}}
 #screen-home .logo-wrap,#screen-home .home-copy,#screen-home .home-hint,#screen-home .home-bottom{display:none!important}
 #screen-home #startBtn{position:absolute;inset:0;width:100%;height:100%;max-width:none;margin:0;padding:0;opacity:0;background:none;border:none;z-index:3;cursor:pointer}
