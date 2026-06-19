@@ -513,6 +513,22 @@ button {
   }
 }
 
+/* 客服核銷提示（中獎後顯示） */
+.draw-status__cs {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(231, 181, 83, 0.18), rgba(231, 181, 83, 0.08));
+  border: 1px solid rgba(243, 209, 137, 0.5);
+  color: var(--gold-soft);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.55;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.draw-status__cs:empty { display: none; }
+
 /* 繼續接單：紅金圖片按鈕（圖底 + 疊字） */
 .back-to-game {
   display: flex;
