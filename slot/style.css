@@ -1,0 +1,530 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --charcoal-void: #090403;
+  --ember-wall: #140b07;
+  --ash-brown: #26140d;
+  --lacquer-panel: rgba(22, 13, 10, 0.92);
+  --gold-rim: #d6a24d;
+  --gold-soft: #f3d189;
+  --brass-shadow: rgba(92, 54, 17, 0.36);
+  --coal-line: rgba(226, 180, 100, 0.22);
+  --ember-text: #f8edd5;
+  --ember-muted: rgba(248, 237, 213, 0.72);
+  --ember-warning: #bf5f2f;
+  --machine-width: min(100vw, 430px);
+  --app-pad: 18px;
+  --window-radius: 24px;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(202, 126, 47, 0.18), transparent 30%),
+    radial-gradient(circle at 20% 25%, rgba(93, 34, 18, 0.35), transparent 34%),
+    radial-gradient(circle at 82% 22%, rgba(99, 37, 18, 0.28), transparent 30%),
+    linear-gradient(180deg, #23110b, #090403 34%, #050201 100%);
+  color: var(--ember-text);
+  font-family: "BiauKai TC", "STKaiti", "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+}
+
+.slot-app {
+  position: relative;
+  width: var(--machine-width);
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: 20px var(--app-pad) 28px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.slot-app::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 0, rgba(255, 227, 160, 0.04) 50%, transparent 100%),
+    repeating-linear-gradient(
+      135deg,
+      transparent 0 20px,
+      rgba(255, 210, 132, 0.035) 20px 21px,
+      transparent 21px 41px
+    );
+  pointer-events: none;
+  z-index: -2;
+}
+
+.backdrop-glow {
+  position: absolute;
+  top: 120px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(220, 150, 60, 0.16), transparent 68%);
+  filter: blur(14px);
+  z-index: -1;
+}
+
+.backdrop-glow--left {
+  left: -90px;
+}
+
+.backdrop-glow--right {
+  right: -90px;
+}
+
+.brand-bar {
+  padding: 8px 2px 20px;
+  text-align: center;
+}
+
+.brand-bar__eyebrow,
+.section-heading__eyebrow,
+.draw-status__eyebrow,
+.stage-chip {
+  margin: 0;
+  color: var(--gold-soft);
+  font-size: 11px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.brand-bar__title {
+  margin: 8px 0 6px;
+  font-size: clamp(32px, 8vw, 40px);
+  line-height: 1.05;
+  font-weight: 900;
+}
+
+.brand-bar__subtitle {
+  margin: 0;
+  color: var(--ember-muted);
+  font-size: 14px;
+}
+
+.machine-stage,
+.prize-grid,
+.draw-panel {
+  position: relative;
+}
+
+.machine-stage__header,
+.section-heading,
+.draw-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.stage-title,
+.section-heading__title {
+  margin: 6px 0 0;
+  font-size: 23px;
+  line-height: 1.15;
+}
+
+.status-lamp {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--coal-line);
+  border-radius: 999px;
+  background: rgba(18, 10, 8, 0.66);
+}
+
+.status-lamp span {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffd378, #a86222 70%);
+  box-shadow: 0 0 10px rgba(255, 197, 108, 0.4);
+}
+
+.machine-shell {
+  position: relative;
+  margin-top: 14px;
+  aspect-ratio: 2 / 3;
+  overflow: visible;
+}
+
+.machine-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 28px rgba(0, 0, 0, 0.34));
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.machine-reels {
+  position: absolute;
+  left: 20.8%;
+  top: 28.8%;
+  width: 58.4%;
+  height: 40.8%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.9%;
+}
+
+.reel-window {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  border-radius: var(--window-radius);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 24%),
+    linear-gradient(180deg, rgba(12, 12, 12, 0.74), rgba(4, 4, 4, 0.92));
+  box-shadow:
+    inset 0 0 0 1px rgba(254, 219, 150, 0.1),
+    inset 0 22px 30px rgba(255, 255, 255, 0.03),
+    inset 0 -24px 30px rgba(0, 0, 0, 0.18);
+}
+
+.reel-window::before,
+.reel-window::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 18%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.reel-window::before {
+  top: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.58), transparent);
+}
+
+.reel-window::after {
+  bottom: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), transparent);
+}
+
+.reel-track {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.reel-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+.reel-symbol__plate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 6px;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at top, rgba(255, 236, 184, 0.16), transparent 30%),
+    linear-gradient(180deg, rgba(29, 18, 14, 0.95), rgba(10, 7, 5, 0.98));
+  border: 1px solid rgba(218, 163, 79, 0.2);
+}
+
+.reel-symbol img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transform: scale(var(--reel-scale, 1.22));
+  transform-origin: center;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.32));
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.machine-sheen {
+  position: absolute;
+  inset: 18% 10% auto;
+  height: 28%;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 75%);
+  transform: rotate(-5deg);
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.prize-grid {
+  margin-top: 20px;
+}
+
+.prize-grid .section-heading {
+  display: block;
+}
+
+.prize-grid .section-heading__title {
+  font-size: 21px;
+}
+
+.prize-grid__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.prize-card {
+  position: relative;
+  min-height: 134px;
+  padding: 10px 10px 12px;
+  border: 1px solid var(--coal-line);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(32, 20, 15, 0.95), rgba(12, 8, 6, 0.98));
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.prize-card.is-active {
+  border-color: rgba(243, 209, 137, 0.52);
+  background:
+    radial-gradient(circle at top, rgba(210, 144, 54, 0.16), transparent 40%),
+    linear-gradient(180deg, rgba(39, 24, 17, 0.98), rgba(12, 8, 6, 1));
+  transform: translateY(-2px);
+}
+
+.prize-card__rank {
+  display: inline-flex;
+  margin-bottom: 8px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(255, 228, 171, 0.08);
+  color: var(--gold-soft);
+  font-size: 11px;
+}
+
+.prize-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  margin-bottom: 10px;
+}
+
+.prize-card__icon img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+}
+
+.prize-card__name {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.prize-card__note {
+  margin: 4px 0 0;
+  color: var(--ember-muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.draw-panel {
+  margin-top: 22px;
+  padding-bottom: 12px;
+}
+
+.spin-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.spin-button:disabled {
+  cursor: wait;
+}
+
+.spin-button__asset {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.spin-button__text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  color: #fdf6e8;
+  font-size: clamp(24px, 6vw, 30px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+.spin-button.spin-button--machine {
+  position: absolute;
+  left: 25.1%;
+  top: 79.2%;
+  width: 49.8%;
+  height: 8.9%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  border-radius: 14px;
+  z-index: 4;
+}
+
+.spin-button.spin-button--machine .spin-button__asset {
+  display: none;
+}
+
+.spin-button.spin-button--machine .spin-button__text {
+  position: static;
+  display: block;
+  padding: 0;
+  font-size: clamp(20px, 5vw, 25px);
+  line-height: 1;
+  letter-spacing: 0;
+  transform: translateY(2px);
+  white-space: nowrap;
+}
+
+.draw-status {
+  margin-top: 0;
+  padding: 16px 16px 14px;
+  border: 1px solid var(--coal-line);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(26, 16, 12, 0.95), rgba(11, 7, 5, 0.98));
+}
+
+.draw-status__copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.draw-status__title {
+  display: block;
+  margin-top: 8px;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.draw-status__detail {
+  margin: 8px 0 0;
+  color: var(--ember-muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.draw-status__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at top, rgba(255, 231, 180, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(31, 18, 14, 0.96), rgba(9, 7, 5, 1));
+  border: 1px solid rgba(216, 162, 77, 0.16);
+}
+
+.draw-status__icon img {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+}
+
+@media (max-width: 360px) {
+  .slot-app {
+    padding-inline: 14px;
+  }
+
+  .stage-title,
+  .section-heading__title {
+    font-size: 21px;
+  }
+
+  .prize-grid__cards {
+    gap: 8px;
+  }
+
+  .prize-card {
+    min-height: 126px;
+    padding-inline: 8px;
+  }
+
+  .prize-card__name {
+    font-size: 14px;
+  }
+
+  .draw-status__title {
+    font-size: 22px;
+  }
+
+  .spin-button.spin-button--machine {
+    left: 24.8%;
+    top: 79.1%;
+    width: 50.4%;
+    height: 9%;
+  }
+}
+
+@media (min-width: 720px) {
+  body {
+    background:
+      radial-gradient(circle at 50% 8%, rgba(219, 158, 73, 0.2), transparent 24%),
+      radial-gradient(circle at 18% 28%, rgba(96, 34, 20, 0.3), transparent 24%),
+      radial-gradient(circle at 82% 26%, rgba(101, 36, 17, 0.28), transparent 22%),
+      linear-gradient(180deg, #21110b, #050201 40%, #050201 100%);
+  }
+
+  .slot-app {
+    padding-top: 26px;
+    padding-bottom: 40px;
+  }
+}
+
+/* 繼續接單：回遊戲 */
+.back-to-game {
+  display: block;
+  width: var(--machine-width);
+  margin: 4px auto 30px;
+  padding: 16px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 14px;
+  border: 2px solid var(--gold-rim);
+  background: linear-gradient(#d8452c, #8f150f);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5), 0 0 16px rgba(255, 90, 40, 0.18);
+}
+.back-to-game:active {
+  transform: translateY(1px);
+}

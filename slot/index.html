@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#140b07" />
+  <title>上野燒肉拉霸機</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="slot-app">
+    <div class="backdrop-glow backdrop-glow--left" aria-hidden="true"></div>
+    <div class="backdrop-glow backdrop-glow--right" aria-hidden="true"></div>
+
+    <header class="brand-bar">
+      <p class="brand-bar__eyebrow">UENO YAKINIKU LOTTERY</p>
+      <h1 class="brand-bar__title">上野燒肉抽獎台</h1>
+      <p class="brand-bar__subtitle">黑金炭火風格三軸拉霸機</p>
+    </header>
+
+    <section class="machine-stage" aria-labelledby="machineTitle">
+      <div class="machine-stage__header">
+        <div>
+          <p class="stage-chip">三軸抽選</p>
+          <h2 id="machineTitle" class="stage-title">本日獎池</h2>
+        </div>
+        <div class="status-lamp" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="machine-shell">
+        <img class="machine-frame" src="./assets/transparent/slot-frame.png" alt="黑金拉霸機框架" />
+
+        <div class="machine-reels" aria-live="polite">
+          <div class="reel-window">
+            <div class="reel-track" data-reel="0"></div>
+          </div>
+          <div class="reel-window">
+            <div class="reel-track" data-reel="1"></div>
+          </div>
+          <div class="reel-window">
+            <div class="reel-track" data-reel="2"></div>
+          </div>
+        </div>
+
+        <button id="spinButton" class="spin-button spin-button--machine" type="button">
+          <img class="spin-button__asset" src="./assets/transparent/draw-button.png" alt="" aria-hidden="true" />
+          <span class="spin-button__text">開始抽獎</span>
+        </button>
+
+        <div class="machine-sheen" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="prize-grid" aria-labelledby="prizeGridTitle">
+      <div class="section-heading">
+        <p class="section-heading__eyebrow">Prize Icons</p>
+        <h2 id="prizeGridTitle" class="section-heading__title">六種抽選結果</h2>
+      </div>
+
+      <div id="prizeCards" class="prize-grid__cards"></div>
+    </section>
+
+    <section class="draw-panel" aria-labelledby="drawStatusTitle">
+      <div class="draw-status">
+        <div class="draw-status__copy">
+          <p class="draw-status__eyebrow" id="drawStatusTitle">目前結果</p>
+          <strong id="resultLabel" class="draw-status__title">待機中</strong>
+          <p id="resultDetail" class="draw-status__detail">按下抽獎按鈕，三軸會停在同一個結果。</p>
+        </div>
+        <div class="draw-status__icon">
+          <img id="resultIcon" src="./assets/transparent/ember-grill.png" alt="目前結果圖示" />
+        </div>
+      </div>
+    </section>
+
+    <a class="back-to-game" href="../index.html">繼續接單 ➜</a>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
