@@ -43,7 +43,6 @@ button {
 .slot-app {
   position: relative;
   width: var(--machine-width);
-  min-height: 100dvh;
   margin: 0 auto;
   padding: 20px var(--app-pad) 28px;
   overflow: hidden;
