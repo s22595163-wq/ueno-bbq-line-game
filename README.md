@@ -6,7 +6,7 @@
 
 ## 🎮 立即遊玩
 
-**▶︎ https://s22595163-wq.github.io/ueno-bbq-line-game/**
+**▶︎ https://gabe45665x.github.io/ueno-bbq-line-game/**
 
 用手機瀏覽器開最佳（直式全螢幕）。
 
@@ -67,7 +67,7 @@ git push
 ## 📱 接 LINE LIFF
 
 1. 到 [LINE Developers](https://developers.line.biz/) 建立 / 編輯 LIFF App。
-2. **Endpoint URL** 填：`https://s22595163-wq.github.io/ueno-bbq-line-game/`
+2. **Endpoint URL** 填：`https://gabe45665x.github.io/ueno-bbq-line-game/`
 3. **Size** 選 **Full**。
 4. 如需登入身分、每日限玩、抽獎核銷，再於 `game.js` 加入 LIFF SDK 與後端 API。
 
